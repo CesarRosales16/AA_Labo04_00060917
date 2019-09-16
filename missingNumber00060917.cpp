@@ -5,7 +5,7 @@
  * Created on 15 de septiembre de 2019, 10:02 PM
  */
 
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 void swap(int* a, int* b) {
