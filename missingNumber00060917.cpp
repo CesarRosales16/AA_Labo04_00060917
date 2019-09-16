@@ -54,11 +54,34 @@ void printArray(int arr[], int size) {
     cout << endl;
 }
 
+int nextMultiple(int num, int base) {
+    while (true) {
+        if (num % base == 0) {
+            return num;
+        }
+        num++;
+    }
+}
+
 int main() {
-    int arr[] = {10, 7, 8, 9, 1, 5};
-    int n = sizeof (arr) / sizeof (arr[0]);
-    quickSort(arr, 0, n - 1);
-    cout << "Sorted array: \n";
-    printArray(arr, n);
+    int T, N, num;
+    cin >> T;
+    int responses[T];
+    for (int i = 0; i < T; i++) {
+        cin >> N;
+        int A[N];
+        for (int j = 0; j < N; j++) {
+            cin >> num;
+            A[j] = (num - 1);
+        }
+        quickSort(A, 0, N - 1);
+        //cout << "Sorted Array " << i << ": "; 
+        //printArray(A, N);
+        //responses[i]=A[N-1];
+        cout << nextMultiple(A[N - 1] + 1, 2) << endl;
+    }
+    /*for(int k=0;k<T;k++) {
+      cout << responses[k]<<endl;
+    }*/
     return 0;
 }
