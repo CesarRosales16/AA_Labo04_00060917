@@ -54,34 +54,31 @@ void printArray(int arr[], int size) {
     cout << endl;
 }
 
-int nextMultiple(int num, int base) {
-    while (true) {
-        if (num % base == 0) {
-            return num;
-        }
-        num++;
-    }
+int minMultipleNumber(int num, int base) {
+    if (num % base == 0) return num;
+    return num - 1;
 }
 
 int main() {
-    int T, N, num;
+    int T, N, num, i, j, res = 0;
     cin >> T;
-    int responses[T];
-    for (int i = 0; i < T; i++) {
+    for (i = 0; i < T; i++) {
         cin >> N;
         int A[N];
-        for (int j = 0; j < N; j++) {
+        for (j = 0; j < N; j++) {
             cin >> num;
-            A[j] = (num - 1);
+            A[j] = (num == 0 ? num : (num - 1));
         }
         quickSort(A, 0, N - 1);
-        //cout << "Sorted Array " << i << ": "; 
+        for (j = 0; j < N; j++) {
+            A[j] = minMultipleNumber(A[j], 2);
+        }
         //printArray(A, N);
-        //responses[i]=A[N-1];
-        cout << nextMultiple(A[N - 1] + 1, 2) << endl;
+        res = 0;
+        for (j = 0; j < N; j++) {
+            if (A[j] <= res && A[j + 1] != res) res += 2;
+        }
+        cout << res << endl;
     }
-    /*for(int k=0;k<T;k++) {
-      cout << responses[k]<<endl;
-    }*/
     return 0;
 }
